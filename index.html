@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthConnect - Track Your Fitness Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg class="health-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 35C20 35 5 25 5 15C5 10 8 7 12 7C15 7 18 9 20 12C22 9 25 7 28 7C32 7 35 10 35 15C35 25 20 35 20 35Z" fill="#4CAF50"/>
+                </svg>
+                <h1>HealthConnect</h1>
+            </div>
+            <nav>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </nav>
+        </header>
+
+        <main class="hero">
+            <div class="hero-content">
+                <div class="demo-disclaimer-banner">
+                    ⚠️ This is a demo application created for educational and testing purposes only.
+                </div>
+                
+                <h2>Track Basic Fitness Insights and Log In Securely</h2>
+                <p class="subtitle">Connect your account to get started with your health journey</p>
+                
+                <div class="login-section">
+                    <button class="tiktok-login-btn" onclick="loginWithTikTok()">
+                        <svg class="tiktok-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                        </svg>
+                        Login with TikTok
+                    </button>
+                    <p class="disclaimer">We only use TikTok for secure authentication</p>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏃</div>
+                        <h3>Track Activity</h3>
+                        <p>Monitor your daily fitness progress</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Set Goals</h3>
+                        <p>Achieve your health objectives</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Secure Login</h3>
+                        <p>Safe TikTok OAuth authentication</p>
+                    </div>
+                </div>
+
+                <div class="oauth-transparency-section">
+                    <h3>🔍 How TikTok is Used</h3>
+                    <div class="transparency-content">
+                        <ul class="transparency-list">
+                            <li>✓ TikTok is used only for user authentication</li>
+                            <li>✓ Only basic profile information is accessed</li>
+                            <li>✓ No content is posted, shared, or analyzed</li>
+                            <li>✓ No sensitive personal data is collected</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 HealthConnect - Demo App for Educational Purposes Only</p>
+            <p class="footer-note">This is a testing application created to demonstrate TikTok OAuth integration</p>
+            <p class="compliance-text">This app uses TikTok only for OAuth login. No TikTok content is published or stored.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
