@@ -7,12 +7,18 @@ export default function Dashboard() {
   const [isAuth, setIsAuth] = useState(false);
   const [showAdForm, setShowAdForm] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(true);
+  const [campaigns, setCampaigns] = useState([]);
 
   useEffect(() => {
     // Check authentication status
     const authStatus = isAuthenticated();
     setIsAuth(authStatus);
     setLoadingAuth(false);
+  }, []);
+
+  useEffect(() => {
+    const savedCampaigns = JSON.parse(localStorage.getItem('campaigns') || '[]');
+    setCampaigns(savedCampaigns);
   }, []);
 
   const handleConnect = () => {
@@ -27,9 +33,27 @@ export default function Dashboard() {
   };
 
   const handleAdSuccess = (adPayload) => {
-    console.log('Ad created:', adPayload);
+    const updatedCampaigns = [adPayload, ...campaigns];
+    localStorage.setItem('campaigns', JSON.stringify(updatedCampaigns));
+    setCampaigns(updatedCampaigns);
     setShowAdForm(false);
-    // Could show success message or navigate here
+  };
+
+  const handleDeleteCampaign = (id) => {
+    const updatedCampaigns = campaigns.filter(campaign => campaign.id !== id);
+    localStorage.setItem('campaigns', JSON.stringify(updatedCampaigns));
+    setCampaigns(updatedCampaigns);
+  };
+
+  const handleViewCampaign = (campaign) => {
+    const message = [
+      `Campaign Name: ${campaign.campaignName}`,
+      `Objective: ${campaign.objective}`,
+      `CTA: ${campaign.cta}`,
+      `Music: ${campaign.musicSelection}`,
+      `Ad Text: ${campaign.adText}`,
+    ].join('\n');
+    window.alert(message);
   };
 
   if (loadingAuth) {
@@ -144,6 +168,43 @@ export default function Dashboard() {
                 />
               </div>
             )}
+
+            <section className="saved-campaigns">
+              <h2>Saved Campaigns</h2>
+              {campaigns.length === 0 ? (
+                <p className="saved-campaigns-empty">No campaigns saved yet.</p>
+              ) : (
+                <div className="campaign-cards">
+                  {campaigns.map((campaign) => (
+                    <div key={campaign.id} className="campaign-card">
+                      <div className="campaign-card-header">
+                        <h3>{campaign.campaignName}</h3>
+                      </div>
+                      <div className="campaign-card-body">
+                        <p><strong>Objective:</strong> {campaign.objective}</p>
+                        <p><strong>CTA:</strong> {campaign.cta}</p>
+                        <p><strong>Music:</strong> {campaign.musicSelection}</p>
+                        <p><strong>Ad Text:</strong> {campaign.adText}</p>
+                      </div>
+                      <div className="campaign-card-actions">
+                        <button
+                          className="btn-secondary"
+                          onClick={() => handleViewCampaign(campaign)}
+                        >
+                          View
+                        </button>
+                        <button
+                          className="btn-danger"
+                          onClick={() => handleDeleteCampaign(campaign.id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
           </div>
         )}
       </main>

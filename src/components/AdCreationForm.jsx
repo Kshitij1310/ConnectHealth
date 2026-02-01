@@ -120,13 +120,25 @@ export default function AdCreationForm({ accessToken, onSuccess }) {
       
       // In production, send to backend which will call TikTok API
       // For now, simulate successful submission
+      const selectedMusicId = formData.musicOption === 'none'
+        ? null
+        : (formData.musicOption === 'custom' ? formData.customMusicId : formData.musicId);
+
+      const musicSelection = formData.musicOption === 'none'
+        ? 'No Music'
+        : (formData.musicOption === 'custom'
+          ? `Custom: ${formData.customMusicId}`
+          : `Existing: ${formData.musicId}`);
+
       const adPayload = {
-        campaign_name: formData.campaignName,
+        id: Date.now().toString(),
+        campaignName: formData.campaignName,
         objective: formData.objective,
-        ad_text: formData.adText,
+        adText: formData.adText,
         cta: formData.cta,
-        music_id: formData.musicOption === 'none' ? null : 
-                  (formData.musicOption === 'custom' ? formData.customMusicId : formData.musicId),
+        musicSelection,
+        musicId: selectedMusicId,
+        createdAt: new Date().toISOString(),
       };
 
       // Simulate API call

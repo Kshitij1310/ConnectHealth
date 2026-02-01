@@ -4,7 +4,7 @@ export const TIKTOK_CONFIG = {
   clientSecret: '83pxgybdCCHFX6J06VHxSsaKGAluGEre',
   authorizationUrl: 'https://www.tiktok.com/v2/auth/authorize/',
   tokenUrl: 'https://open.tiktokapis.com/v2/oauth/token/',
-  redirectUri: 'https://kshitij1310.github.io/ConnectHealth/#/oauth/callback',
+  redirectUri: 'https://kshitij1310.github.io/ConnectHealth/oauth/callback',
   scope: 'user.info.basic',
 };
 

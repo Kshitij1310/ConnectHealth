@@ -277,6 +277,70 @@
   border-color: var(--text-dark);
 }
 
+/* ==================== SAVED CAMPAIGNS ==================== */
+.saved-campaigns {
+  margin-top: 2rem;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.saved-campaigns h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.saved-campaigns-empty {
+  color: var(--text-light);
+}
+
+.campaign-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.campaign-card {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1rem;
+  background: var(--bg-white);
+}
+
+.campaign-card-header h3 {
+  margin-bottom: 0.5rem;
+}
+
+.campaign-card-body p {
+  margin: 0.4rem 0;
+  color: var(--text-light);
+}
+
+.campaign-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.btn-secondary {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-danger {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
 /* ==================== FOOTER ==================== */
 .dashboard-footer {
   background: white;
