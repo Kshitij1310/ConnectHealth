@@ -33,6 +33,28 @@ export default function CreateAd() {
   const [selectedAd, setSelectedAd] = useState(null);
   const [showPreview, setShowPreview] = useState(false);
 
+  // Load saved campaigns from localStorage on mount
+  useEffect(() => {
+    const savedCampaigns = localStorage.getItem('campaigns');
+    if (savedCampaigns) {
+      try {
+        const campaigns = JSON.parse(savedCampaigns);
+        setAds(campaigns);
+        console.log('Loaded', campaigns.length, 'campaigns from localStorage');
+      } catch (error) {
+        console.error('Failed to load campaigns:', error);
+      }
+    }
+  }, []);
+
+  // Save campaigns to localStorage whenever ads state changes
+  useEffect(() => {
+    if (ads.length > 0) {
+      localStorage.setItem('campaigns', JSON.stringify(ads));
+      console.log('Saved', ads.length, 'campaigns to localStorage');
+    }
+  }, [ads]);
+
   // Check authentication on mount - ONLY check if token exists, not validity
   useEffect(() => {
     console.log('CreateAd mounted - checking token presence');
