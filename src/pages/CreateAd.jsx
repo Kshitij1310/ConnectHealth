@@ -33,18 +33,18 @@ export default function CreateAd() {
   const [selectedAd, setSelectedAd] = useState(null);
   const [showPreview, setShowPreview] = useState(false);
 
-  // Check authentication on mount
+  // Check authentication on mount - ONLY check if token exists, not validity
   useEffect(() => {
-    console.log('CreateAd mounted - checking token validity');
-    const tokenValid = tokenManager.isTokenValid();
-    console.log('Token valid:', tokenValid);
-    console.log('Token:', tokenManager.getToken() ? 'Present' : 'Missing');
+    console.log('CreateAd mounted - checking token presence');
+    const token = tokenManager.getToken();
+    console.log('Token:', token ? 'Present' : 'Missing');
     
-    if (!tokenValid) {
-      console.log('Token invalid - redirecting to home');
+    // Only redirect if NO token exists at all
+    if (!token) {
+      console.log('No token found - redirecting to home');
       navigate('/');
     } else {
-      console.log('Token valid - rendering form');
+      console.log('Token present - rendering form (validity checked on API calls)');
     }
   }, [navigate]);
 
