@@ -1,0 +1,4 @@
+# OAuth Callback
+
+This page handles the OAuth 2.0 callback from TikTok.
+The React app will render here and process the authorization code.

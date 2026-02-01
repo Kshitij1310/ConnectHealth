@@ -1,0 +1,52 @@
+.error-banner {
+  background-color: #ffebee;
+  border-left: 4px solid #d32f2f;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.error-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d32f2f;
+  font-size: 14px;
+}
+
+.error-banner-icon {
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.error-banner-message {
+  flex: 1;
+}
+
+.error-banner-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #d32f2f;
+  font-size: 16px;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.error-banner-close:hover {
+  opacity: 1;
+}
