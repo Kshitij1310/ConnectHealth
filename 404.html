@@ -8,12 +8,10 @@
   <body>
     <script>
       (function () {
-        var base = '/ConnectHealth';
-        var path = window.location.pathname || '/';
+        var locationPath = window.location.pathname || '/';
         var search = window.location.search || '';
-        var trimmed = path.startsWith(base) ? path.slice(base.length) : path;
-        var redirect = base + '/#' + trimmed + search;
-        window.location.replace(redirect);
+        var hashRedirect = '/ConnectHealth/#' + locationPath.replace('/ConnectHealth', '') + search;
+        window.location.replace(hashRedirect);
       })();
     </script>
   </body>
