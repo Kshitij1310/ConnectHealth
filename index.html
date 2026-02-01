@@ -9,5 +9,21 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- GitHub Pages OAuth Redirect Fallback -->
+    <script>
+      (function() {
+        // Handle OAuth callback redirect for GitHub Pages
+        // If URL is /ConnectHealth/oauth/callback?code=XXX
+        // Redirect to /ConnectHealth/#/oauth/callback?code=XXX
+        const path = window.location.pathname;
+        const search = window.location.search;
+        
+        if (path.includes('/oauth/callback') && search) {
+          const newPath = path.replace('/oauth/callback', '/#/oauth/callback');
+          window.location.replace(window.location.origin + newPath + search);
+        }
+      })();
+    </script>
   </body>
 </html>
