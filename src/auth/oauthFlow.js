@@ -1,4 +1,4 @@
-import { TIKTOK_CONFIG } from '../config/constants';
+import { TIKTOK_CONFIG, TIKTOK_CLIENT_SECRET } from '../config/constants';
 
 /**
  * Generate a secure random state string for OAuth
@@ -52,7 +52,7 @@ export async function exchangeCodeForToken(code) {
   try {
     const payload = {
       client_key: TIKTOK_CONFIG.clientKey,
-      client_secret: TIKTOK_CONFIG.clientSecret,
+      client_secret: TIKTOK_CLIENT_SECRET,
       code,
       grant_type: 'authorization_code',
       redirect_uri: TIKTOK_CONFIG.redirectUri,

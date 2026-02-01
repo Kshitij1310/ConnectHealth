@@ -341,13 +341,29 @@ export default function CreateAd() {
             {formData.musicOption === 'custom' && (
               <div className="radio-details">
                 {!formData.customMusicUpload ? (
-                  <button
-                    type="button"
-                    onClick={handleMusicUpload}
-                    className="btn-upload"
-                  >
-                    📁 Simulate Music Upload
-                  </button>
+                  <>
+                    <input
+                      type="file"
+                      id="music-file-input"
+                      accept="audio/*,.mp3,.wav,.m4a"
+                      style={{ display: 'none' }}
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files[0]) {
+                          handleMusicUpload();
+                        }
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => document.getElementById('music-file-input').click()}
+                      className="btn-upload"
+                    >
+                      📁 Upload Music File
+                    </button>
+                    <small style={{ display: 'block', marginTop: '8px', color: '#666' }}>
+                      Accepts: MP3, WAV, M4A (simulated upload for demo)
+                    </small>
+                  </>
                 ) : (
                   <div className="upload-success">
                     ✓ Music uploaded: {formData.musicId}
