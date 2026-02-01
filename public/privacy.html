@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - HealthConnect</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+            line-height: 1.6;
+            background: #f9f9f9;
+        }
+        h1 { color: #25f4ee; margin-top: 2rem; }
+        h2 { color: #00b4a6; margin-top: 1.5rem; }
+        .header { background: linear-gradient(135deg, #25f4ee, #00b4a6); color: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
+        .back-link { margin-bottom: 2rem; }
+        .back-link a { color: #25f4ee; text-decoration: none; }
+        .back-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="back-link">
+        <a href="/ConnectHealth/">← Back to App</a>
+    </div>
+
+    <div class="header">
+        <h1>Privacy Policy</h1>
+        <p>HealthConnect - TikTok Ads Integration</p>
+    </div>
+
+    <h2>1. Information Collection</h2>
+    <p>
+        This Application collects minimal information necessary for TikTok OAuth authentication:
+    </p>
+    <ul>
+        <li><strong>TikTok Access Token:</strong> Stored locally in your browser only</li>
+        <li><strong>OAuth State Parameter:</strong> Used for CSRF protection, not stored permanently</li>
+        <li><strong>Form Data:</strong> Ad campaign details are not sent to external servers in this implementation</li>
+    </ul>
+
+    <h2>2. Data Storage</h2>
+    <p>
+        All tokens and authentication data are stored exclusively in your browser's localStorage. 
+        No personal or authentication data is transmitted to or stored on HealthConnect servers.
+    </p>
+
+    <h2>3. Third-Party Services</h2>
+    <p>
+        This Application communicates with:
+    </p>
+    <ul>
+        <li><strong>TikTok OAuth Server:</strong> For authentication</li>
+        <li><strong>TikTok API:</strong> For user verification (user.info.basic scope)</li>
+    </ul>
+    <p>
+        Your use of TikTok's services is governed by TikTok's Privacy Policy.
+    </p>
+
+    <h2>4. Security</h2>
+    <p>
+        <strong>⚠️ Important:</strong> This frontend-only implementation exchanges OAuth tokens in the browser. 
+        In a production environment, token exchange must occur on a secure backend server with proper HTTPS/TLS encryption.
+    </p>
+
+    <h2>5. User Rights</h2>
+    <p>
+        You can:
+    </p>
+    <ul>
+        <li>Clear your localStorage to remove stored tokens at any time</li>
+        <li>Revoke application access through your TikTok account settings</li>
+        <li>Request deletion of any data by clearing your browser data</li>
+    </ul>
+
+    <h2>6. Changes to Privacy Policy</h2>
+    <p>
+        HealthConnect may update this Privacy Policy periodically. 
+        Your continued use of the Application indicates acceptance of any changes.
+    </p>
+
+    <h2>7. Contact & Support</h2>
+    <p>
+        For privacy concerns, contact TikTok's support through their official channels.
+    </p>
+
+    <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ccc; color: #999;">
+        Last updated: February 2026
+    </p>
+</body>
+</html>
