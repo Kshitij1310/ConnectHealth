@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HealthConnect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg class="health-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 35C20 35 5 25 5 15C5 10 8 7 12 7C15 7 18 9 20 12C22 9 25 7 28 7C32 7 35 10 35 15C35 25 20 35 20 35Z" fill="#4CAF50"/>
+                </svg>
+                <h1>HealthConnect</h1>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </nav>
+        </header>
+
+        <main class="dashboard">
+            <div class="success-banner">
+                <div class="success-icon">✓</div>
+                <h2>Login Successful!</h2>
+                <p>Welcome to HealthConnect</p>
+            </div>
+
+            <div class="user-profile">
+                <div class="profile-card">
+                    <div class="profile-image-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%234CAF50'/%3E%3Cpath d='M60 30c8.3 0 15 6.7 15 15s-6.7 15-15 15-15-6.7-15-15 6.7-15 15-15zm0 40c-16.5 0-30 7.5-30 16.7V95h60v-8.3C90 77.5 76.5 70 60 70z' fill='white'/%3E%3C/svg%3E" 
+                             alt="User Profile" 
+                             class="profile-image">
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="username">Demo User</h3>
+                        <p class="user-id">@healthconnect_demo</p>
+                        <div class="auth-badge">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="#4CAF50">
+                                <path d="M8 0L10.2 5.6L16 6.5L12 10.4L13 16L8 13.6L3 16L4 10.4L0 6.5L5.8 5.6L8 0Z"/>
+                            </svg>
+                            Authenticated via TikTok
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon">ℹ️</div>
+                    <div class="info-content">
+                        <h4>Authentication Only</h4>
+                        <p>This app uses TikTok only for authentication. We do not access, store, or publish any TikTok content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-data-label">
+                <span class="badge-sample">📊 Sample Data - Demo Only</span>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="stat-card metric-card">
+                    <div class="stat-icon">🚶</div>
+                    <div class="stat-info">
+                        <h4>Steps Today</h4>
+                        <p class="stat-value">5,432</p>
+                        <span class="stat-label">Sample Data</span>
+                    </div>
+                </div>
+                <div class="stat-card metric-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-info">
+                        <h4>Calories Burned</h4>
+                        <p class="stat-value">320 kcal</p>
+                        <span class="stat-label">Sample Data</span>
+                    </div>
+                </div>
+                <div class="stat-card metric-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-info">
+                        <h4>Activity Time</h4>
+                        <p class="stat-value">45 min</p>
+                        <span class="stat-label">Sample Data</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" style="margin-top: 24px;">
+                <div class="stat-card">
+                    <div class="stat-icon">👤</div>
+                    <div class="stat-info">
+                        <h4>Profile Status</h4>
+                        <p class="stat-value">Active</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔐</div>
+                    <div class="stat-info">
+                        <h4>Security</h4>
+                        <p class="stat-value">OAuth Verified</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📱</div>
+                    <div class="stat-info">
+                        <h4>App Type</h4>
+                        <p class="stat-value">Demo/Testing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-notice">
+                <h3>🧪 Demo Application Notice</h3>
+                <p>This is a demonstration application created for educational purposes to showcase TikTok OAuth integration. No actual fitness tracking functionality is implemented.</p>
+                <button class="btn-secondary" onclick="window.location.href='index.html'">Return to Home</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 HealthConnect - Demo App for Educational Purposes Only</p>
+            <p class="footer-note">This is a testing application created to demonstrate TikTok OAuth integration</p>
+            <p class="compliance-text">This app uses TikTok only for OAuth login. No TikTok content is published or stored.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

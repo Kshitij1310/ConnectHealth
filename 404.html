@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var base = '/ConnectHealth';
+        var path = window.location.pathname || '/';
+        var search = window.location.search || '';
+        var trimmed = path.startsWith(base) ? path.slice(base.length) : path;
+        var redirect = base + '/#' + trimmed + search;
+        window.location.replace(redirect);
+      })();
+    </script>
+  </body>
+</html>
