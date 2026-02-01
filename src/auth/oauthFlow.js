@@ -84,11 +84,15 @@ export async function exchangeCodeForToken(code) {
     }
 
     const data = await response.json();
-    return {
+    console.log('TikTok token response:', data);
+    
+    const tokenData = {
       accessToken: data.access_token,
       expiresIn: data.expires_in,
       tokenType: data.token_type,
     };
+    console.log('Returning token data:', tokenData);
+    return tokenData;
   } catch (error) {
     if (error instanceof TypeError) {
       throw new Error(

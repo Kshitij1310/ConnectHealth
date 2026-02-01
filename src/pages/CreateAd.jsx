@@ -35,8 +35,16 @@ export default function CreateAd() {
 
   // Check authentication on mount
   useEffect(() => {
-    if (!tokenManager.isTokenValid()) {
+    console.log('CreateAd mounted - checking token validity');
+    const tokenValid = tokenManager.isTokenValid();
+    console.log('Token valid:', tokenValid);
+    console.log('Token:', tokenManager.getToken() ? 'Present' : 'Missing');
+    
+    if (!tokenValid) {
+      console.log('Token invalid - redirecting to home');
       navigate('/');
+    } else {
+      console.log('Token valid - rendering form');
     }
   }, [navigate]);
 

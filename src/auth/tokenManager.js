@@ -6,12 +6,20 @@ class TokenManager {
    */
   storeToken(accessToken, expiresIn, user = null) {
     const now = new Date().getTime();
+    console.log('Storing token:', { accessToken: accessToken ? 'Present' : 'Missing', expiresIn, now, user });
+    
     localStorage.setItem(TOKEN_STORAGE_KEYS.accessToken, accessToken);
     localStorage.setItem(TOKEN_STORAGE_KEYS.expiresIn, expiresIn);
     localStorage.setItem(TOKEN_STORAGE_KEYS.createdAt, now.toString());
     if (user) {
       localStorage.setItem(TOKEN_STORAGE_KEYS.user, JSON.stringify(user));
     }
+    
+    console.log('Token stored. Verification:', {
+      accessToken: localStorage.getItem(TOKEN_STORAGE_KEYS.accessToken) ? 'Stored' : 'Failed',
+      expiresIn: localStorage.getItem(TOKEN_STORAGE_KEYS.expiresIn),
+      createdAt: localStorage.getItem(TOKEN_STORAGE_KEYS.createdAt)
+    });
   }
 
   /**
@@ -26,14 +34,27 @@ class TokenManager {
    */
   isTokenValid() {
     const token = this.getToken();
-    if (!token) return false;
+    if (!token) {
+      console.log('TokenManager: No token found');
+      return false;
+    }
 
     const createdAt = parseInt(localStorage.getItem(TOKEN_STORAGE_KEYS.createdAt) || '0');
     const expiresIn = parseInt(localStorage.getItem(TOKEN_STORAGE_KEYS.expiresIn) || '0');
     const now = new Date().getTime();
 
+    console.log('TokenManager validation:', {
+      createdAt,
+      expiresIn,
+      now,
+      expiresAt: createdAt + expiresIn * 1000,
+      isValid: now < createdAt + expiresIn * 1000
+    });
+
     // Token is valid if current time < creation time + expires in
-    return now < createdAt + expiresIn * 1000;
+    const isValid = now < createdAt + expiresIn * 1000;
+    console.log('Token is valid:', isValid);
+    return isValid;
   }
 
   /**

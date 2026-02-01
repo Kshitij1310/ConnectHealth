@@ -37,31 +37,24 @@ export default function OAuthCallback() {
     // Exchange code for token
     exchangeCodeForToken(code)
       .then(async (tokenData) => {
-        console.log('Token exchange successful!');
-        // Store token FIRST so it's available for user info fetch
+        console.log('Token exchange successful!', tokenData);
+        
+        // Store token immediately
         tokenManager.storeToken(tokenData.accessToken, tokenData.expiresIn);
+        console.log('Token stored in localStorage');
 
-        // Now fetch user info with the stored token
+        // Redirect immediately to prevent hanging
+        console.log('Navigating to /create-ad...');
+        navigate('/create-ad', { replace: true });
+
+        // Try to fetch user info in background (non-blocking)
         try {
-          console.log('Fetching user info...');
           const userInfo = await fetchUserInfo();
-          // Update token storage with user info
-          tokenManager.storeToken(
-            tokenData.accessToken,
-            tokenData.expiresIn,
-            userInfo
-          );
-          console.log('User info fetched successfully:', userInfo);
+          tokenManager.storeToken(tokenData.accessToken, tokenData.expiresIn, userInfo);
+          console.log('User info updated:', userInfo);
         } catch (err) {
-          // User info fetch failed, but token is valid - continue anyway
-          console.warn('Could not fetch user info (continuing anyway):', err.message);
+          console.warn('User info fetch failed (non-critical):', err.message);
         }
-
-        // Redirect to ad creation form
-        console.log('Redirecting to create-ad page...');
-        setTimeout(() => {
-          navigate('/create-ad');
-        }, 1000);
       })
       .catch((err) => {
         console.error('Token exchange failed:', err);
