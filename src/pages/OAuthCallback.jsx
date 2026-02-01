@@ -18,6 +18,9 @@ export default function OAuthCallback() {
     const code = searchParams.get('code');
     const state = searchParams.get('state');
 
+    console.log('OAuth Callback - Code:', code ? 'Present' : 'Missing');
+    console.log('OAuth Callback - State:', state ? 'Present' : 'Missing');
+
     if (!code) {
       setError('Authorization code not found. Please try the login flow again.');
       setLoading(false);
@@ -30,32 +33,38 @@ export default function OAuthCallback() {
       return;
     }
 
+    console.log('Starting token exchange...');
     // Exchange code for token
     exchangeCodeForToken(code)
       .then(async (tokenData) => {
-        // Store token
+        console.log('Token exchange successful!');
+        // Store token FIRST so it's available for user info fetch
         tokenManager.storeToken(tokenData.accessToken, tokenData.expiresIn);
 
-        // Try to fetch user info for better UX
+        // Now fetch user info with the stored token
         try {
+          console.log('Fetching user info...');
           const userInfo = await fetchUserInfo();
+          // Update token storage with user info
           tokenManager.storeToken(
             tokenData.accessToken,
             tokenData.expiresIn,
             userInfo
           );
+          console.log('User info fetched successfully:', userInfo);
         } catch (err) {
-          // User info fetch failed, but token is valid
-          // Continue with just the token
-          console.warn('Could not fetch user info:', err.message);
+          // User info fetch failed, but token is valid - continue anyway
+          console.warn('Could not fetch user info (continuing anyway):', err.message);
         }
 
         // Redirect to ad creation form
+        console.log('Redirecting to create-ad page...');
         setTimeout(() => {
           navigate('/create-ad');
-        }, 1500);
+        }, 1000);
       })
       .catch((err) => {
+        console.error('Token exchange failed:', err);
         setError(err.message || 'Failed to authenticate with TikTok.');
         setLoading(false);
       });
