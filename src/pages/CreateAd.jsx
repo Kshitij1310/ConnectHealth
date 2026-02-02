@@ -424,26 +424,6 @@ export default function CreateAd() {
       {showPreview && selectedAd && (
         <AdPreview ad={selectedAd} onClose={handleClosePreview} />
       )}
-
-      {/* Helpful Info */}
-      <div className="info-box">
-        <h3>ℹ️ Important Notes</h3>
-        <ul>
-          <li>
-            <strong>Music & Objective:</strong> If you select "Conversions",
-            music is required. "Traffic" campaigns can run without music.
-          </li>
-          <li>
-            <strong>Custom Music:</strong> Simulated upload generates a mock
-            music ID. In production, this would connect to a real music library.
-          </li>
-          <li>
-            <strong>Real Token:</strong> Your access token is securely stored
-            and valid for{' '}
-            {Math.floor(tokenManager.getTimeRemaining() / 60)} minutes.
-          </li>
-        </ul>
-      </div>
     </div>
   );
 }
