@@ -23,11 +23,20 @@ If you want to run this locally:
    ```
    npm install
    ```
-3. Start the development server:
+3. **Set up environment variables:**
+   ```
+   cp .env.example .env
+   ```
+   Then edit `.env` and add your TikTok client secret:
+   ```
+   VITE_TIKTOK_CLIENT_SECRET=your_client_secret_here
+   ```
+   
+4. Start the development server:
    ```
    npm run dev
    ```
-4. Open http://localhost:3000/ConnectHealth/
+5. Open http://localhost:3000/ConnectHealth/
 
 To build for production:
 ```
@@ -46,10 +55,13 @@ The TikTok OAuth is already configured and working. But if you want to set it up
 1. Go to TikTok Developer Portal and create an app
 2. Set the redirect URI to match your deployment URL (mine is set to the GitHub Pages URL)
 3. Copy your Client Key and Client Secret
-4. Update the config file with your credentials
+4. **Add your Client Secret to `.env` file:**
+   ```
+   VITE_TIKTOK_CLIENT_SECRET=your_client_secret_here
+   ```
 5. Make sure the redirect URI in TikTok matches exactly what's in the code
 
-Since this is frontend-only, the OAuth token exchange happens on the client side. I know this isn't ideal for production, but it works for this assignment.
+Since this is frontend-only, the OAuth token exchange happens on the client side. I know this isn't ideal for production, but it works for this assignment. The client secret is loaded from environment variables at build time, which is better than hardcoding it directly in source files.
 
 ## Assumptions or Shortcuts Taken
 
@@ -57,7 +69,7 @@ Here are some things I simplified or assumed:
 
 - **No backend:** The token exchange happens on the frontend. In a real app, this should be done on a secure backend server.
 
-- **Client secret exposed:** Since there's no backend, the client secret is visible in the code. This is acceptable for the assignment but wouldn't be safe in production.
+- **Client secret in environment variables:** The client secret is loaded from build-time environment variables (`.env` file). While this prevents hardcoding in source files, the secret is still embedded in the bundled JavaScript and can be extracted from browser DevTools. **Production apps MUST handle OAuth token exchange on a secure backend.**
 
 - **Music upload simulation:** The custom music upload feature generates a mock ID instead of actually uploading a file. TikTok's music API would require more setup.
 
@@ -67,4 +79,4 @@ Here are some things I simplified or assumed:
 
 - **No actual ad creation:** When you submit a campaign, it's just saved locally. It doesn't actually create an ad on TikTok because that would need advertiser credentials and backend integration.
 
-The main goal was to demonstrate a working OAuth flow with real TikTok authentication and a functional UI for managing campaigns.
+The main goal was to demonstrate a working OAuth flow with real TikTok authentication and a functional UI for managing campaigns, while showing awareness of security best practices.

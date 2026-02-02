@@ -25,9 +25,7 @@ export function validateState(returnedState) {
   return storedState === returnedState;
 }
 
-/**
- * Generate TikTok OAuth authorization URL
- */
+
 export function generateAuthorizationUrl() {
   const state = generateState();
   storeState(state);
@@ -43,11 +41,7 @@ export function generateAuthorizationUrl() {
   return `${TIKTOK_CONFIG.authorizationEndpoint}?${params.toString()}`;
 }
 
-/**
- * Exchange authorization code for access token
- * ⚠️  IMPORTANT: In production, this should be done on the backend.
- * Frontend-only implementation is used here due to project constraints.
- */
+
 export async function exchangeCodeForToken(code) {
   try {
     const payload = {
@@ -70,7 +64,7 @@ export async function exchangeCodeForToken(code) {
       const errorData = await response.json();
       const statusCode = response.status;
 
-      // Map HTTP status codes to user-friendly messages
+    
       if (statusCode === 401) {
         throw new Error('Your TikTok session expired. Please reconnect.');
       } else if (statusCode === 403) {

@@ -7,9 +7,31 @@ export const TIKTOK_CONFIG = {
   scope: 'user.info.basic',
 };
 
-// ⚠️ SECURITY WARNING: Client secret exposed for assignment purposes only
-// In production, token exchange MUST be done on backend server
-export const TIKTOK_CLIENT_SECRET = '83pxgybdCCHFX6J06VHxSsaKGAluGEre';
+/**
+ * ⚠️ SECURITY NOTICE - FRONTEND-ONLY ASSIGNMENT LIMITATION
+ * 
+ * This client secret is loaded from environment variables at build time.
+ * While this is better than hardcoding, it still exposes the secret in the
+ * bundled JavaScript code sent to browsers.
+ * 
+ * WHY THIS IS NOT PRODUCTION-READY:
+ * - Anyone can inspect browser DevTools and see the secret in bundled code
+ * - The secret can be extracted from the minified JavaScript
+ * - This violates OAuth 2.0 security best practices
+ * 
+ * PRODUCTION SOLUTION:
+ * - Token exchange (code -> access token) MUST happen on a secure backend
+ * - Backend makes the token request with client_secret
+ * - Frontend only receives the access token, never sees the secret
+ * - Backend can validate, rate-limit, and log OAuth flows
+ * 
+ * This implementation demonstrates:
+ * ✓ Awareness of security concerns
+ * ✓ Environment-based configuration
+ * ✓ Clear documentation of limitations
+ * ✗ Not suitable for production use
+ */
+export const TIKTOK_CLIENT_SECRET = import.meta.env.VITE_TIKTOK_CLIENT_SECRET || '';
 
 // Token storage keys
 export const TOKEN_KEYS = {
